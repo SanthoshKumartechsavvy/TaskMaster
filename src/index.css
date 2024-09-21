@@ -1,0 +1,502 @@
+body {
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  background-color: #1a1a1a;
+
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.App {
+  width: 100%;
+  max-width: 1000px;
+  color: aliceblue;
+  height: 100vh;
+  /* border: 1px solid #333; */
+  /* box-shadow: 0px 0px 15px gray; */
+  position: relative;
+}
+
+.active {
+  background-color: rgb(0,230,122);
+}
+
+.header {
+  padding: 1rem;
+  background-color: #1a1a1a;
+
+}
+
+.header h1{
+  display: grid;
+  place-content: center;
+  color: aliceblue;
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+.search label {
+  display: none;
+}
+.search input {
+  width: 40%;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 1.5rem; 
+}
+.search input:focus {
+  outline: 3px solid rgb(0,230,122);
+}
+
+
+.content {
+  background-color: #353434;
+  width: 80%;
+  /* height: 82%; */
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0.5rem;
+  /* box-shadow: 5px -5px 0px 0px rgba(34, 33, 33, 0.75); */
+}
+
+.tasks-cont {
+  background-color: #353434;
+  width: 80%;
+  height: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  overflow-y: auto;
+  /* box-shadow: -5px 5px 0px 0px rgba(34, 33, 33, 0.75); */
+}
+
+.addtasks label {
+  display: none;
+}
+
+.addtasks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.title{
+  width: 40%;
+}
+
+.title input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  border-radius: 0.3rem;
+  border: none;
+}
+.title input:focus {
+  outline: 3.5px solid rgb(0,230,122);
+}
+
+.description {
+  width: 40%;
+}
+
+.description input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  border-radius: 0.3rem;
+  border: none;
+}
+button {
+  padding: 0.55rem;
+  color: aliceblue;
+  font-weight: 500;
+  border: none;
+  background-color: rgb(0,230,122);
+  border-radius: 0.3rem;
+  align-self: flex-end;
+  cursor: pointer;
+}
+
+.nav {
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  border-top: 1px solid gray;
+  margin-left: 3rem;
+  margin-right: 3rem;
+
+}
+
+.nav ul  {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  align-items: center;
+  gap: 5%;
+}
+
+nav ul li a{
+  background-color: rgb(71,71,71);
+  padding: 0.5rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+.nav ul li a {
+  list-style: none;
+  text-decoration: none;
+  color: aliceblue;
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.todo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.todo li {
+  display: flex;
+  align-items: center;
+  padding: 0.7rem;
+  width: 85%;
+  background-color: rgb(71,71,71);
+}
+
+.todo li input {
+  justify-self: flex-start;
+  margin-left: 2%;
+  width: 3rem;
+  height: 3rem;
+  margin-right: 3%;
+  cursor: pointer;
+}
+
+.icons {
+  align-self: center;
+  margin-left: 3%;
+  margin-right: 2%;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.todocontent {
+  flex-basis: 80%;
+}
+
+.todocontent h2 {
+  color: rgb(0,230,122);
+}
+
+.completed-title {
+  text-decoration: line-through;
+  opacity: 0.8;
+}
+
+.completed-description {
+  opacity: 0.8;
+}
+
+.edittask {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 350px;
+  padding: 2rem;
+  background-color:#3c3939;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  border-radius: 1rem;
+  box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.66);
+  display: block;
+}
+
+.edittitle label {
+  display: none;
+}
+
+.edittitle input{
+  width: 100%;
+  padding: 0.4rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.editdescription input {
+  width: 100%;
+  padding: 0.4rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.edittask button {
+  margin-top: 1rem;
+  width: 100%;
+  border-radius: 1rem;
+}
+
+.icon,.icondoing,.icondelete {
+  cursor: pointer;
+  transition: 0.3s ease all;
+  font-size: 2rem;
+}
+.icon:hover {
+  color: rgb(0,230,122);
+}
+.icondelete:hover {
+  color: red;
+}
+.icondoing:hover {
+  color: rgb(71, 71, 219);
+}
+
+.doing {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.doing li {
+  display: flex;
+  align-items: center;
+  padding: 0.7rem;
+  width: 85%;
+  background-color: rgb(71,71,71);
+}
+
+.doing li input {
+  justify-self: flex-start;
+  margin-left: 2%;
+  width: 3rem;
+  height: 3rem;
+  margin-right: 3%;
+  cursor: pointer;
+}
+.doingcontent {
+  flex-basis: 70%;
+}
+.stopwatch {
+  margin-right: 1%;
+  font-size: 2rem;
+  border: 3px solid rgb(0,230,122);
+  padding: 0.3rem;
+  border-radius: 2rem;
+}
+.abort {
+  align-self: center;
+  margin-right: 2%;
+  background-color: rgb(255, 24, 24);
+  border: none;
+  border-radius: 0.5rem;
+}
+
+.doingcontent h2 {
+  color: rgb(0,230,122);
+}
+.pause {
+  cursor: pointer;
+  transition: 0.3s ease all;
+  font-size: 1.6rem;
+  margin-top: 0.2rem;
+}
+.icons {
+  margin-right: 2%;
+}
+
+.taskposted {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: rgb(158, 155, 155);
+}
+
+.taskdetails {
+  flex-basis: 60%;
+  font-size: 0.8rem;
+  color: rgb(158, 155, 155);
+}
+
+/* RESPONSIE DESIGN  */
+
+@media only screen and (max-width: 600px) {
+
+  .App{
+    width: 100%;
+  }
+
+  .header {
+    /* padding: 1.5rem; */
+    width: 100%;
+    position: sticky;
+    top: 0;
+  }
+  /* .header h1 {
+    /* margin-top: 1rem;
+    font-size: 2.5rem; */
+  
+  .content {
+    width: 100vw;
+  }
+  .tasks-cont {
+    width: 100%;
+    height: 80%;
+  }
+  .addtasks {
+    flex-direction: column;
+  }
+  .title {
+    width: 90%;
+
+  }
+  /* .title h4 {
+    font-size: 1.5rem;
+  } */
+  .title input {
+    padding: 0.75rem;
+  }
+  .description {
+    width: 90%;
+    margin-bottom: 0.5rem;
+  }
+  /* .description h4 {
+    font-size: 1.5rem;
+  } */
+  .description input {
+    padding: 0.75rem;
+  }
+  button {
+    align-self: center;
+    width: 40%;
+    font-size: 1rem;
+    border-radius: 1.5rem;
+    /* padding: 0.75rem; */
+    /* margin-bottom: 1rem; */
+    cursor: default;
+  }
+  .search input {
+    width: 65%;
+    padding: 0.75rem;
+  }
+  /* .search {
+    padding-bottom: 1rem;
+  } */
+  .content {
+    padding: 0.5rem;
+  }
+  .nav ul {
+    gap: 0rem;
+    
+  }
+  .nav ul li a{
+    font-size: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    cursor: default;
+  }
+
+  .doingcontent h2{
+    font-size: 1.25rem;
+  }
+  .doingcontent p {
+    font-size: 0.75rem;
+  }
+  .taskposted {
+    font-size: 0.5rem;
+    display: block;
+  }
+  .stopwatch {
+    font-size: 1rem;
+    margin-right: 0;
+  }
+  .abort {
+    width: 70px;
+    padding: 0.5rem;
+    position: relative;
+    top: 6px;
+    cursor: default;
+  }
+  .pause {
+    cursor: default;
+  }
+  .icons {
+    font-size: 1rem;
+  }
+  .icondoing, .icon, .icondelete {
+    font-size: 1.5rem;
+  }
+
+  .todocontent h2 {
+    font-size: 1.25rem;
+  }
+  .todocontent p {
+    font-size: 0.75rem;
+  }
+
+  .edittask {
+    width: 300px;
+    height: 300px;
+    padding: 1.5rem;
+  }
+  .edittask button {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+  }
+  .pause {
+    font-size: 1rem;
+  }
+  .abort {
+    padding: 0.5rem;
+    font-size: 0.5rem;
+    top: 0;
+  }
+
+  .taskdetails {
+    font-size: 0.5rem;
+  }
+  .doing {
+    flex-direction: column;
+  }
+  .doingcontent {
+    flex-basis: 40%;
+  }
+
+}
